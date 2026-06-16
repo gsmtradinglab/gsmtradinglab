@@ -1,0 +1,1 @@
+import {ref,uploadBytes,getDownloadURL} from "firebase/storage";import {storage} from "./firebase";export async function uploadFile(path:string,file:File){const clean=file.name.replace(/[^a-zA-Z0-9._-]/g,"-");const r=ref(storage,`${path}/${Date.now()}-${clean}`);await uploadBytes(r,file);return getDownloadURL(r)}
