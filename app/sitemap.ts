@@ -1,1 +1,0 @@
-import type {MetadataRoute} from "next";export default function sitemap():MetadataRoute.Sitemap{const b='https://gsmtradinglab.com';return['','/about','/courses','/signals','/signal-performance','/market-tools','/calculators','/contact','/legal'].map(p=>({url:b+p,lastModified:new Date(),changeFrequency:'weekly',priority:p===''?1:.8}))}
