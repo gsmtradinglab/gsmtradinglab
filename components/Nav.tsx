@@ -13,7 +13,7 @@ export default function Nav() {
         <Link href="/courses">Courses</Link><Link href="/signals">Signals</Link><Link href="/market-tools">Market Tools</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link>
       </div>
       <div className="flex gap-2 text-sm">
-        {user ? <><Link className="btn-dark px-3 py-2" href="/dashboard">Dashboard</Link>{profile?.role !== "user" && <Link className="btn-dark px-3 py-2" href="/admin">Admin</Link>}<button className="btn-green px-3 py-2" onClick={() => signOut(auth)}>Logout</button></> : <><Link className="btn-dark px-3 py-2" href="/login">Login</Link><Link className="btn-green px-3 py-2" href="/signup">Signup</Link></>}
+        {user ? <><Link className="btn-dark px-3 py-2" href="/dashboard">Dashboard</Link>{profile?.role !== "user" && <Link className="btn-dark px-3 py-2" href="/admin">Admin</Link>}<button className="btn-green px-3 py-2" onClick={() => auth && signOut(auth)}>Logout</button></> : <><Link className="btn-dark px-3 py-2" href="/login">Login</Link><Link className="btn-green px-3 py-2" href="/signup">Signup</Link></>}
       </div>
     </div>
   </nav>

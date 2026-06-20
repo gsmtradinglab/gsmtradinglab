@@ -1,7 +1,7 @@
-import { initializeApp, getApps } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { initializeApp, getApps, type FirebaseApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider, type Auth } from "firebase/auth";
+import { getFirestore, type Firestore } from "firebase/firestore";
+import { getStorage, type FirebaseStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -12,8 +12,21 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-export const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+export const firebaseConfigured = Boolean(
+  firebaseConfig.apiKey &&
+  firebaseConfig.authDomain &&
+  firebaseConfig.projectId &&
+  firebaseConfig.storageBucket &&
+  firebaseConfig.messagingSenderId &&
+  firebaseConfig.appId
+);
+
+// Do not initialize Firebase with empty env vars during Netlify/Vercel prerender builds.
+export const app: FirebaseApp | null = firebaseConfigured
+  ? (getApps().length ? getApps()[0] : initializeApp(firebaseConfig))
+  : null;
+
+export const auth: Auth | null = app ? getAuth(app) : null;
+export const db: Firestore | null = app ? getFirestore(app) : null;
+export const storage: FirebaseStorage | null = app ? getStorage(app) : null;
 export const googleProvider = new GoogleAuthProvider();
