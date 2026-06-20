@@ -17,10 +17,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setLoading(false);
       return;
     }
-    return onAuthStateChanged(auth, async (u) => {
+
+    const firebaseAuth = auth;
+    const firestore = db;
+
+    return onAuthStateChanged(firebaseAuth, async (u) => {
       setUser(u);
       if (!u) { setProfile(null); setLoading(false); return; }
-      const ref = doc(db, "users", u.uid);
+      const ref = doc(firestore, "users", u.uid);
       const snap = await getDoc(ref);
       if (snap.exists()) setProfile(snap.data() as UserProfile);
       else {
