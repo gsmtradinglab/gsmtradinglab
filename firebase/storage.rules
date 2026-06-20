@@ -2,10 +2,19 @@ rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
     function signedIn() { return request.auth != null; }
+    function validFile() { return request.resource.size < 10 * 1024 * 1024 && request.resource.contentType.matches('image/.*|application/pdf'); }
+
     match /payment-proofs/{userId}/{fileName} {
-      allow read, write: if signedIn() && request.auth.uid == userId && request.resource.size < 10 * 1024 * 1024;
+      allow read, write: if signedIn() && request.auth.uid == userId && validFile();
     }
-    match /public/{fileName} { allow read: if true; allow write: if signedIn(); }
-    match /{allPaths=**} { allow read, write: if false; }
+
+    match /signal-charts/{fileName} {
+      allow read: if true;
+      allow write: if signedIn() && validFile();
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
   }
 }
