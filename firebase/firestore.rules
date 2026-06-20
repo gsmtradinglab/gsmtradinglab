@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+    function isAdmin() { return signedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin','superAdmin']; }
+    function isSuperAdmin() { return signedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'superAdmin'; }
+
+    match /users/{uid} {
+      allow create: if isOwner(uid);
+      allow read: if isOwner(uid) || isAdmin();
+      allow update: if isOwner(uid) && !('role' in request.resource.data.diff(resource.data).changedKeys()) && !('courseAccess' in request.resource.data.diff(resource.data).changedKeys()) && !('paymentStatus' in request.resource.data.diff(resource.data).changedKeys()) || isAdmin();
+      allow delete: if isSuperAdmin();
+    }
+    match /registrations/{id} {
+      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
+      allow read: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+      allow update, delete: if isAdmin();
+    }
+    match /supportTickets/{id} {
+      allow create: if true;
+      allow read: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+      allow update, delete: if isAdmin();
+    }
+    match /signals/{id} {
+      allow read: if resource.data.visibility == 'Public Free' || isAdmin();
+      allow write: if isAdmin();
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
