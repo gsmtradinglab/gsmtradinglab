@@ -131,3 +131,14 @@ This package adds learning and practice tools:
 - Updated sitemap and robots.txt.
 
 After uploading this ZIP to GitHub, redeploy on Vercel with build cache disabled if old code keeps appearing.
+
+
+## Phase 16 Additions
+
+- Admissions process page
+- Mentorship overview page
+- Class schedule guide page
+- Risk acknowledgement page
+- Admin deployment SOP
+- Admin incident response guide
+- Navigation and sitemap updates
