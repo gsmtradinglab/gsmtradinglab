@@ -48,3 +48,31 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ## Important Disclaimer
 Trading and investing involve high risk. This app is education-focused only and does not guarantee profit, fixed returns, or loss recovery.
+
+## Phase 3 Update Included
+
+This package adds the next production features for GSM Trading Lab:
+
+- Admin overview stats
+- User search and management
+- Change user role, status, payment status, and course access from Admin Panel
+- Payment proof review and approval/rejection
+- Automatic premium access after payment verification
+- Registration management and status updates
+- Signal management with visibility and status updates
+- Public Signal Performance page at `/signal-performance`
+- Payment settings form in Admin Panel
+- Updated Firestore rules
+- Updated Storage rules so admins can view payment proofs
+
+### After Uploading This Update
+
+1. Upload/replace these files in your GitHub repo.
+2. Vercel will redeploy automatically.
+3. In Firebase Console, update Firestore rules from `firebase/firestore.rules`.
+4. In Firebase Console, update Storage rules from `firebase/storage.rules`.
+5. Login as admin and open `/admin`.
+
+### Important
+
+If public signals or performance page do not show immediately, create at least one signal from Admin Panel with visibility set to `Public Free`.
