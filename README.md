@@ -76,3 +76,21 @@ This package adds the next production features for GSM Trading Lab:
 ### Important
 
 If public signals or performance page do not show immediately, create at least one signal from Admin Panel with visibility set to `Public Free`.
+
+## Phase 4 Update Included
+
+This package adds learning and practice tools:
+
+- Trading calculators at `/tools`
+- Demo trading simulator at `/demo-trading`
+- User trading journal at `/journal`
+- Learning resources center at `/resources`
+- Dashboard quick links for tools, demo, journal, and resources
+- Updated Firestore rules for demo trades, demo accounts, journals, and resources
+
+### After Uploading Phase 4
+
+1. Replace the repo files with this ZIP.
+2. Let Vercel redeploy.
+3. Firebase Console → Firestore → Rules → paste `firebase/firestore.rules` → Publish.
+4. Test `/tools`, `/demo-trading`, `/journal`, and `/resources` after login.
