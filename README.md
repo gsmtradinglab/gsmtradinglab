@@ -119,3 +119,15 @@ This package adds learning and practice tools:
 - User Notifications page: `/notifications`
 - Updated dashboard and navigation links
 - Updated Firestore rules for `courses`, `marketAnalysis`, and `notifications`
+
+## Phase 7 Additions
+
+- Global WhatsApp Channel floating CTA.
+- Vercel Analytics integration.
+- Stronger SEO metadata and Open Graph settings.
+- PWA manifest file.
+- Start Here onboarding page.
+- Improved Market Tools page with TradingView BTCUSDT widget and risk notes.
+- Updated sitemap and robots.txt.
+
+After uploading this ZIP to GitHub, redeploy on Vercel with build cache disabled if old code keeps appearing.

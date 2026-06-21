@@ -1,0 +1,10 @@
+{
+  "name": "GSM Trading Lab",
+  "short_name": "GSM Lab",
+  "description": "Learn crypto trading responsibly with Mr. GSM.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#22c55e",
+  "icons": []
+}

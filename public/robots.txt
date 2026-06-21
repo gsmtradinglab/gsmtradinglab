@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
-Sitemap: https://gsmtradinglab.com/sitemap.xml
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /payments
+Disallow: /notifications
+
+Sitemap: https://www.gsmtradinglab.com/sitemap.xml
