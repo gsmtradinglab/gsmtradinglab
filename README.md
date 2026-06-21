@@ -111,3 +111,11 @@ This package adds learning and practice tools:
 2. Wait for Vercel redeploy.
 3. In Firebase Console, publish the updated `firebase/firestore.rules`.
 4. Login as admin and open `/admin/content` to add blogs and announcements.
+
+## Phase 6 additions
+- Course CMS: `/admin/courses`
+- Market Analysis CMS: `/admin/market-analysis`
+- Public Market Analysis page: `/market-analysis`
+- User Notifications page: `/notifications`
+- Updated dashboard and navigation links
+- Updated Firestore rules for `courses`, `marketAnalysis`, and `notifications`

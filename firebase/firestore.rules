@@ -98,6 +98,22 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
+
+    match /courses/{id} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /marketAnalysis/{id} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /notifications/{id} {
+      allow read: if signedIn();
+      allow create, update, delete: if isAdmin();
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
