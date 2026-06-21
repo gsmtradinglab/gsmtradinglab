@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db, firebaseConfigured } from "@/lib/firebase";
 import { useAuth } from "@/lib/auth";
 
@@ -15,7 +15,7 @@ export default function DemoTradingPage() {
 
   async function load() {
     if (!firebaseConfigured || !db || !user) return;
-    const snap = await getDocs(query(collection(db, "demoTrades"), where("userId", "==", user.uid)("createdAt", "desc")));
+    const snap = await getDocs(query(collection(db, "demoTrades"), where("userId", "==", user.uid), orderBy("createdAt", "desc")));
     setTrades(snap.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a:any,b:any)=>String(b.createdAt||"").localeCompare(String(a.createdAt||""))));
   }
 

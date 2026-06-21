@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { addDoc, collection, getDocs, query, where, deleteDoc, doc } from "firebase/firestore";
+import { addDoc, collection, getDocs, orderBy, query, where, deleteDoc, doc } from "firebase/firestore";
 import { db, firebaseConfigured } from "@/lib/firebase";
 import { useAuth } from "@/lib/auth";
 
@@ -13,7 +13,7 @@ export default function JournalPage() {
 
   async function load() {
     if (!firebaseConfigured || !db || !user) return;
-    const snap = await getDocs(query(collection(db, "tradingJournals"), where("userId", "==", user.uid)("createdAt", "desc")));
+    const snap = await getDocs(query(collection(db, "tradingJournals"), where("userId", "==", user.uid), orderBy("createdAt", "desc")));
     setItems(snap.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a:any,b:any)=>String(b.createdAt||"").localeCompare(String(a.createdAt||""))));
   }
   useEffect(() => { load(); }, [user]);
