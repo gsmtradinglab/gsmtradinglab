@@ -5,6 +5,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
     "",
     "/start-here",
+    "/pricing",
+    "/testimonials",
+    "/referral-program",
     "/risk-management",
     "/launch-checklist",
     "/system-status",
@@ -17,6 +20,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/help-center",
     "/compliance",
     "/admin/quality-check",
+    "/admin/operating-manual",
+    "/admin/marketing-checklist",
     "/about",
     "/founder",
     "/courses",
