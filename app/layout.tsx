@@ -3,6 +3,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import { AuthProvider } from "@/lib/auth";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AuthProvider>
           <Nav />
           {children}
+          <Footer />
           <WhatsAppFloat />
         </AuthProvider>
         <Analytics />
