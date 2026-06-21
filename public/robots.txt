@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gsmtradinglab.com/sitemap.xml

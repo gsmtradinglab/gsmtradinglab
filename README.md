@@ -94,3 +94,20 @@ This package adds learning and practice tools:
 2. Let Vercel redeploy.
 3. Firebase Console → Firestore → Rules → paste `firebase/firestore.rules` → Publish.
 4. Test `/tools`, `/demo-trading`, `/journal`, and `/resources` after login.
+
+## Phase 5 Added
+- Blog CMS: `/admin/content`
+- Public blog pages: `/blog` and `/blog/[slug]`
+- Announcements CMS and public announcements page
+- FAQ page
+- Legal pages: Terms, Privacy, Risk Disclaimer, Refund Policy
+- Account Management & Investment Inquiry workflow
+- Profile settings page
+- SEO sitemap and robots.txt
+- Updated Firestore security rules for blogs, announcements, inquiries, and website settings
+
+### After Uploading Phase 5
+1. Replace/upload files in GitHub.
+2. Wait for Vercel redeploy.
+3. In Firebase Console, publish the updated `firebase/firestore.rules`.
+4. Login as admin and open `/admin/content` to add blogs and announcements.

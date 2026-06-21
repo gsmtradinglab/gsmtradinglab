@@ -1,0 +1,4 @@
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+export const dynamic = "force-dynamic";
+export default async function AnnouncementsPage(){ let items:any[]=[]; if(db){ try{ const s=await getDocs(query(collection(db,"announcements"), where("status","==","published"), orderBy("createdAt","desc"))); items=s.docs.map(d=>({id:d.id,...d.data()})); }catch{} } return <main className="mx-auto max-w-5xl px-4 py-10"><h1 className="text-3xl font-black">Announcements</h1><div className="mt-8 space-y-4">{items.length?items.map(a=><div className="card" key={a.id}><p className="text-xs text-green-400">{a.audience}</p><h2 className="text-xl font-bold">{a.title}</h2><p className="mt-2 text-slate-300">{a.message}</p></div>):<div className="card">No announcements yet.</div>}</div></main> }
