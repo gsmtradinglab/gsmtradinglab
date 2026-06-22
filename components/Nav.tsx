@@ -16,6 +16,9 @@ const menu = [
       ["Membership", "/membership"],
       ["Mentorship", "/mentorship"],
       ["Class Schedule", "/class-schedule"],
+      ["Exchange Guide", "/exchange-guide"],
+      ["Binance Guide", "/binance-guide"],
+      ["Trading Plan", "/trading-plan"],
       ["Resources", "/resources"],
     ],
   },
@@ -34,6 +37,7 @@ const menu = [
       ["AI Terminal", "/ai-terminal"],
       ["AI Coach", "/ai-coach"],
       ["Risk Engine", "/risk-engine"],
+      ["Risk Playbook", "/risk-playbook"],
       ["Watchlist", "/watchlist"],
       ["News Terminal", "/news-terminal"],
       ["Strategy Library", "/strategy-library"],
@@ -111,7 +115,7 @@ export default function Nav() {
           {user ? (
             <>
               <Link className="btn-dark px-4 py-2" href="/dashboard">Dashboard</Link>
-              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link><Link className="btn-dark px-4 py-2" href="/admin/revenue-hub">Revenue</Link><Link className="btn-dark px-4 py-2" href="/admin/lead-crm">CRM</Link></>}
+              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link><Link className="btn-dark px-4 py-2" href="/admin/revenue-hub">Revenue</Link><Link className="btn-dark px-4 py-2" href="/admin/lead-crm">CRM</Link><Link className="btn-dark px-4 py-2" href="/admin/student-success">Students</Link></>}
               <button className="btn-green px-4 py-2" onClick={() => auth && signOut(auth)}>Logout</button>
             </>
           ) : (
