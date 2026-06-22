@@ -66,6 +66,13 @@ const menu = [
       ["Affiliate", "/affiliate"],
       ["Webinars", "/webinars"],
       ["Email Campaigns", "/email-campaigns"],
+      ["Community Q&A", "/community-qa"],
+      ["Trading Challenges", "/trading-challenges"],
+      ["Badges", "/achievement-badges"],
+      ["Leaderboard", "/leaderboard"],
+      ["Mentorship Directory", "/mentorship-directory"],
+      ["Study Groups", "/study-groups"],
+      ["Event Calendar", "/event-calendar"],
     ],
   },
   {
@@ -79,6 +86,7 @@ const menu = [
       ["Onboarding", "/onboarding"],
       ["Help Center", "/help-center"],
       ["Mobile App", "/mobile-app"],
+      ["AI Learning Assistant", "/ai-learning-assistant"],
     ],
   },
 ];
@@ -121,7 +129,7 @@ export default function Nav() {
           {user ? (
             <>
               <Link className="btn-dark px-4 py-2" href="/dashboard">Dashboard</Link>
-              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link><Link className="btn-dark px-4 py-2" href="/admin/revenue-hub">Revenue</Link><Link className="btn-dark px-4 py-2" href="/admin/lead-crm">CRM</Link><Link className="btn-dark px-4 py-2" href="/admin/student-success">Students</Link><Link className="btn-dark px-4 py-2" href="/admin/signal-desk">Signal Desk</Link></>}
+              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link><Link className="btn-dark px-4 py-2" href="/admin/revenue-hub">Revenue</Link><Link className="btn-dark px-4 py-2" href="/admin/lead-crm">CRM</Link><Link className="btn-dark px-4 py-2" href="/admin/student-success">Students</Link><Link className="btn-dark px-4 py-2" href="/admin/signal-desk">Signal Desk</Link><Link className="btn-dark px-4 py-2" href="/admin/community-center">Community</Link></>}
               <button className="btn-green px-4 py-2" onClick={() => auth && signOut(auth)}>Logout</button>
             </>
           ) : (
