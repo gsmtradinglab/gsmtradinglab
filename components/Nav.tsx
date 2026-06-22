@@ -80,6 +80,9 @@ const adminLinks = [
   ["Revenue", "/admin/revenue-hub"],
   ["Analytics", "/admin/analytics-pro"],
   ["Content Queue", "/admin/content-queue"],
+  ["CMS Data", "/admin/cms-data"],
+  ["Site Settings", "/admin/site-settings"],
+  ["Data Seed", "/admin/data-seed"],
 ];
 
 function Dropdown({ label, links }: { label: string; links: string[][] }) {
