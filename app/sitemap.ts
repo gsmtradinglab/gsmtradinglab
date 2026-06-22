@@ -99,6 +99,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/admin/webinar-center",
     "/admin/affiliate-hub",
     "/admin/email-campaigns",
+    "/ai-learning-assistant",
+    "/community-qa",
+    "/trading-challenges",
+    "/achievement-badges",
+    "/leaderboard",
+    "/mentorship-directory",
+    "/study-groups",
+    "/event-calendar",
+    "/admin/community-center",
+    "/admin/challenge-manager",
+    "/admin/badge-manager",
+    "/admin/event-manager",
   ];
   return pages.map((path) => ({ url: `${base}${path}`, lastModified: new Date(), changeFrequency: "weekly", priority: path === "" ? 1 : 0.7 }));
 }
