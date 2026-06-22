@@ -13,6 +13,7 @@ const menu = [
       ["Start Here", "/start-here"],
       ["Courses", "/courses"],
       ["Admissions", "/admissions"],
+      ["Membership", "/membership"],
       ["Mentorship", "/mentorship"],
       ["Class Schedule", "/class-schedule"],
       ["Resources", "/resources"],
@@ -31,6 +32,8 @@ const menu = [
       ["Journal Analytics Pro", "/journal-analytics-pro"],
       ["Liquidation Heatmap", "/liquidation-heatmap"],
       ["AI Terminal", "/ai-terminal"],
+      ["AI Coach", "/ai-coach"],
+      ["Risk Engine", "/risk-engine"],
       ["Watchlist", "/watchlist"],
       ["News Terminal", "/news-terminal"],
       ["Strategy Library", "/strategy-library"],
@@ -52,6 +55,7 @@ const menu = [
       ["Blog", "/blog"],
       ["Glossary", "/glossary"],
       ["Roadmap", "/roadmap"],
+      ["Lead Funnel", "/lead-funnel"],
     ],
   },
   {
@@ -107,7 +111,7 @@ export default function Nav() {
           {user ? (
             <>
               <Link className="btn-dark px-4 py-2" href="/dashboard">Dashboard</Link>
-              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link><Link className="btn-dark px-4 py-2" href="/admin/revenue-hub">Revenue</Link></>}
+              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link><Link className="btn-dark px-4 py-2" href="/admin/revenue-hub">Revenue</Link><Link className="btn-dark px-4 py-2" href="/admin/lead-crm">CRM</Link></>}
               <button className="btn-green px-4 py-2" onClick={() => auth && signOut(auth)}>Logout</button>
             </>
           ) : (
