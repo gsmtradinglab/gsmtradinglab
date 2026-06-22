@@ -26,6 +26,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/admin/deployment-sop",
     "/admin/incident-response",
     "/risk-management",
+
+    "/premium-signals",
+    "/signal-lab",
+    "/trade-setups",
+    "/admin/signal-desk",
+    "/admin/membership-control",
+    "/admin/content-queue",
     "/exchange-guide",
     "/binance-guide",
     "/trading-plan",
