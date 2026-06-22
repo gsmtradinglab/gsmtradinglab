@@ -63,6 +63,9 @@ const menu = [
       ["Glossary", "/glossary"],
       ["Roadmap", "/roadmap"],
       ["Lead Funnel", "/lead-funnel"],
+      ["Affiliate", "/affiliate"],
+      ["Webinars", "/webinars"],
+      ["Email Campaigns", "/email-campaigns"],
     ],
   },
   {
