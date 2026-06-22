@@ -1,182 +1,207 @@
 import Link from "next/link";
 
 const stats = [
-  ["5+", "Years Experience"],
-  ["24/7", "Learning Support"],
-  ["$100", "Lifetime Online Access"],
-  ["1%", "Risk Rule Focus"]
+  ["5+", "Years practical market experience"],
+  ["$10K", "Virtual demo trading wallet"],
+  ["24/7", "Learning and community support"],
+  ["1%", "Risk per trade discipline"],
 ];
 
 const services = [
-  { title: "Premium Signals", text: "Educational market setups with entry, stop loss, take profits, risk notes, and transparent status tracking.", icon: "📈" },
-  { title: "Crypto Courses", text: "Beginner to advanced technical analysis, fundamentals, futures basics, psychology, and real chart practice.", icon: "🎓" },
-  { title: "Demo Trading", text: "Practice before risking capital. Record decisions, review mistakes, and build discipline with a demo workflow.", icon: "🧪" },
-  { title: "Mentorship", text: "One-to-one and physical learning options for students who need direct correction and practical guidance.", icon: "🤝" }
+  ["Premium Signals", "Educational market setups with entry zone, stop loss, targets, visibility levels, and transparent status tracking.", "/signals"],
+  ["Crypto Courses", "Beginner to advanced learning path covering TA, FA, futures basics, psychology, and risk management.", "/courses"],
+  ["1-on-1 Mentorship", "Personal guidance for strategy correction, mistake review, risk planning, and chart practice with Mr. GSM.", "/mentorship"],
+  ["Demo Practice", "Practice trading with virtual balance, track PnL, and build discipline before risking real capital.", "/demo-trading"],
 ];
 
-const reasons = ["Risk management first", "No fake profit guarantees", "Practical chart learning", "Premium community support", "Signals with disclaimers", "Lifetime learning model"];
+const tools = [
+  ["Risk Calculator", "Define your risk before entry"],
+  ["Position Size", "Control loss before trade"],
+  ["Trading Journal", "Track mistakes and lessons"],
+  ["Market Terminal", "Charts, widgets and data"],
+  ["Signal Performance", "Transparent signal stats"],
+  ["Strategy Library", "Structured playbooks"],
+];
+
+const reasons = [
+  "No guaranteed profit claims",
+  "Risk-first learning culture",
+  "Practical market examples",
+  "Beginner-friendly roadmap",
+  "Premium support ecosystem",
+  "Transparent signal tracking",
+];
 
 const faqs = [
-  ["Is profit guaranteed?", "No. Trading is risky. GSM Trading Lab provides education, market analysis and learning support only."],
-  ["Is this beginner friendly?", "Yes. The course starts from basics and moves toward technical analysis, futures basics, risk management and psychology."],
-  ["Is the fee monthly?", "The online course is promoted as lifetime access for a one-time $100 fee, subject to admin approval and access status."],
-  ["Do I get premium signals?", "Premium access can include educational premium signals after payment verification and admin approval."]
+  ["Is profit guaranteed?", "No. Trading involves high risk. GSM Trading Lab provides education, analysis and support only."],
+  ["Is this for beginners?", "Yes. The learning path starts from basics and moves toward practical analysis, futures concepts and risk management."],
+  ["Is the fee monthly?", "The core premium offer is positioned as lifetime access with one-time payment, subject to admin approval."],
+  ["Do I get signals?", "Free signals are public. Premium signals unlock after course or premium access approval."],
 ];
 
 export default function Home() {
   return (
-    <main className="overflow-hidden">
-      <section className="relative mx-auto grid min-h-[calc(100vh-76px)] max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-6">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(34,197,94,0.18),transparent_30%),radial-gradient(circle_at_85%_30%,rgba(59,130,246,0.12),transparent_35%)]" />
-        <div className="absolute left-1/2 top-8 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl animate-pulse-slow" />
+    <main className="relative overflow-hidden">
+      <div className="hero-bg" />
+      <div className="matrix-glow" />
 
-        <div className="animate-fade-up">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-300">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_16px_#34d399]" /> @gsmtradinglab • Risk First
+      <section className="page-shell grid min-h-[86vh] gap-10 pt-16 md:grid-cols-[1.05fr_.95fr] md:items-center lg:pt-20">
+        <div className="animate-slide-up">
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <span className="badge">@gsmtradinglab</span>
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-bold text-slate-300 shadow-xl shadow-black/20">
+              Crypto • Futures • Signals • Risk Management
+            </span>
           </div>
-          <h1 className="max-w-4xl text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+
+          <h1 className="max-w-5xl text-5xl font-black leading-[0.92] tracking-tight md:text-7xl xl:text-8xl">
             Learn Crypto Trading with <span className="text-gradient">Mr. GSM</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-            Practical crypto education, technical analysis, fundamental awareness, futures trading basics, premium educational signals, demo practice, and lifetime learning support under GSM Trading Lab.
+
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
+            A premium trading education platform built for practical learning, market analysis, demo trading, transparent signals, and responsible risk management.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/register" className="btn-green shadow-glow">Start Learning</Link>
+
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link href="/register" className="btn-green">Start Learning</Link>
             <Link href="/signals" className="btn-dark">View Free Signals</Link>
-            <Link href="/market-tools" className="btn-dark">Market Tools</Link>
+            <Link href="/market-terminal" className="btn-dark">Open Market Terminal</Link>
           </div>
-          <p className="mt-5 max-w-2xl rounded-2xl border border-red-400/20 bg-red-500/10 p-4 text-sm text-red-100">
-            Trading involves high risk. No profit, fixed return, or loss recovery is guaranteed. Learn before risking real money.
-          </p>
+
+          <div className="mt-9 rounded-3xl border border-green-400/20 bg-green-400/10 p-4 text-sm leading-6 text-green-50 shadow-[0_0_40px_rgba(34,197,94,.08)]">
+            <b>Risk First. Profit Later.</b> No fake returns, no guaranteed monthly income, no guaranteed recovery. Learn the market before risking real money.
+          </div>
         </div>
 
-        <div className="relative animate-float">
-          <div className="premium-card p-5 sm:p-7">
-            <div className="flex items-center justify-between border-b border-white/10 pb-5">
+        <div className="animate-float">
+          <div className="terminal-card">
+            <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-sm text-slate-400">Market Education Terminal</p>
-                <h2 className="text-2xl font-black">Risk First. Profit Later.</h2>
+                <p className="text-sm font-bold uppercase tracking-[0.25em] text-green-300">GSM Command Center</p>
+                <h2 className="mt-2 text-3xl font-black">Live Learning Terminal</h2>
               </div>
-              <div className="rounded-2xl bg-emerald-400/10 px-4 py-2 text-sm font-bold text-emerald-300">LIVE</div>
+              <span className="rounded-2xl bg-green-400 px-4 py-2 text-xs font-black text-slate-950">ONLINE</span>
             </div>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {["BTCUSDT", "ETHUSDT", "XAUUSD", "EURUSD"].map((pair, i) => (
-                <div key={pair} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold">{pair}</span>
-                    <span className={i % 2 === 0 ? "text-emerald-300" : "text-red-300"}>{i % 2 === 0 ? "+2.4%" : "-0.8%"}</span>
+
+            <div className="mt-8 space-y-3">
+              {[
+                ["BTCUSDT", "+2.48%", "Educational watchlist"],
+                ["ETHUSDT", "Premium setup", "Use strict stop loss"],
+                ["XAUUSD", "High volatility", "News risk warning"],
+              ].map(([pair, status, note]) => (
+                <div className="terminal-row" key={pair}>
+                  <div>
+                    <b>{pair}</b>
+                    <p className="text-sm text-slate-400">{note}</p>
                   </div>
-                  <div className="mt-4 h-16 rounded-xl bg-[linear-gradient(135deg,rgba(16,185,129,0.2),transparent_60%),repeating-linear-gradient(90deg,rgba(255,255,255,0.08)_0_1px,transparent_1px_18px)]" />
+                  <span className="text-sm font-black text-green-300">{status}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-5 rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-5 text-emerald-100">
-              Use stop loss. Risk max 1% per trade. Avoid revenge trading. Protect capital first.
+
+            <div className="mt-7 grid grid-cols-2 gap-3">
+              {stats.map(([value, label]) => (
+                <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4" key={label}>
+                  <p className="text-3xl font-black text-green-300">{value}</p>
+                  <p className="mt-1 text-xs leading-5 text-slate-400">{label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-10 lg:px-6">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map(([value, label]) => (
-            <div key={label} className="premium-card p-6 text-center transition hover:-translate-y-1 hover:border-emerald-400/30">
-              <div className="text-4xl font-black text-emerald-300">{value}</div>
-              <div className="mt-2 text-sm font-semibold text-slate-400">{label}</div>
-            </div>
+      <section className="page-shell pt-0">
+        <div className="section-head">
+          <span className="badge">Platform</span>
+          <h2 className="section-title mt-4">Everything a serious beginner needs</h2>
+          <p className="mt-4 max-w-2xl text-slate-400">Education, signals, demo practice, journal discipline, market tools, resources, and admin-controlled premium access in one platform.</p>
+        </div>
+
+        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {services.map(([title, desc, href]) => (
+            <Link href={href} className="card group" key={title}>
+              <div className="mb-5 h-12 w-12 rounded-2xl bg-green-400/10 ring-1 ring-green-400/20 transition group-hover:scale-110 group-hover:bg-green-400/20" />
+              <h3 className="text-xl font-black">{title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{desc}</p>
+            </Link>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 lg:px-6">
-        <div className="mb-10 max-w-3xl">
-          <p className="section-kicker">What You Get</p>
-          <h2 className="section-title">A complete learning ecosystem for responsible traders.</h2>
-        </div>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {services.map((item) => (
-            <div key={item.title} className="premium-card group p-6 transition hover:-translate-y-2 hover:border-emerald-400/40">
-              <div className="mb-5 text-4xl transition group-hover:scale-110">{item.icon}</div>
-              <h3 className="text-xl font-black">{item.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-400">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-16 lg:px-6">
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+      <section className="page-shell">
+        <div className="grid gap-6 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
           <div>
-            <p className="section-kicker">Why GSM Trading Lab</p>
-            <h2 className="section-title">Built around survival, discipline, and practical market learning.</h2>
-            <p className="mt-5 text-slate-300 leading-7">Mr. GSM created GSM Trading Lab to help beginners and struggling traders avoid costly mistakes by learning risk management, psychology and real market structure before taking large risk.</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/about" className="btn-dark">About GSM</Link>
-              <Link href="/founder" className="btn-green">Who is Mr. GSM?</Link>
+            <span className="badge">Market Tools</span>
+            <h2 className="section-title mt-4">Practice like a trader before trading like one</h2>
+            <p className="mt-5 leading-8 text-slate-400">Use calculators, terminal pages, demo trading, journal entries, and signal performance dashboards to build process-first habits.</p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/tools" className="btn-green">Explore Tools</Link>
+              <Link href="/journal" className="btn-dark">Open Journal</Link>
             </div>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {reasons.map((reason) => (
-              <div key={reason} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 font-semibold text-slate-200">
-                <span className="mr-2 text-emerald-300">✓</span>{reason}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {tools.map(([title, desc]) => (
+              <div className="metric-card" key={title}>
+                <p className="text-lg font-black text-white">{title}</p>
+                <p className="mt-2 text-sm text-slate-400">{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 lg:px-6">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="premium-card p-8">
-            <p className="section-kicker">Free Access</p>
-            <h3 className="mt-3 text-3xl font-black">Start Free</h3>
-            <p className="mt-3 text-slate-400">Explore free signals, public resources and market tools.</p>
-            <ul className="mt-6 space-y-3 text-slate-300">
-              <li>✓ Free educational signals</li>
-              <li>✓ Basic market tools</li>
-              <li>✓ Community access</li>
-            </ul>
-            <Link href="/signup" className="btn-dark mt-8 inline-flex">Create Free Account</Link>
-          </div>
-          <div className="premium-card relative overflow-hidden border-emerald-400/30 p-8 shadow-glow">
-            <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-emerald-400/20 blur-3xl" />
-            <p className="section-kicker">Premium Lifetime</p>
-            <h3 className="mt-3 text-3xl font-black">$100 Online Course</h3>
-            <p className="mt-3 text-slate-300">Lifetime learning support, premium signals access, demo tools, journal, and practical guidance after admin approval.</p>
-            <ul className="mt-6 space-y-3 text-slate-200">
-              <li>✓ Beginner to advanced learning</li>
-              <li>✓ Premium signals access</li>
-              <li>✓ Demo simulator + journal</li>
-              <li>✓ Lifetime community support</li>
-            </ul>
-            <Link href="/register" className="btn-green mt-8 inline-flex">Join Premium</Link>
+      <section className="page-shell">
+        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-950/90 p-6 shadow-2xl shadow-black/30 md:p-10">
+          <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
+            <div>
+              <span className="badge">Why GSM</span>
+              <h2 className="section-title mt-4">Built around survival, discipline and long-term growth</h2>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {reasons.map((reason) => (
+                <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 font-bold text-slate-200" key={reason}>✓ {reason}</div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 lg:px-6">
-        <div className="mb-10 text-center">
-          <p className="section-kicker justify-center">FAQ</p>
-          <h2 className="section-title mx-auto">Clear answers before you join.</h2>
+      <section className="page-shell">
+        <div className="section-head text-center">
+          <span className="badge">Plans</span>
+          <h2 className="section-title mt-4">Simple pricing. Serious learning.</h2>
         </div>
-        <div className="mx-auto grid max-w-4xl gap-4">
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <div className="card">
+            <p className="badge w-fit">Free</p>
+            <h3 className="mt-5 text-3xl font-black">Community Access</h3>
+            <p className="mt-3 text-slate-400">Free signals, basic resources, market tools, and learning previews.</p>
+            <Link href="/signup" className="btn-dark mt-7 inline-block">Join Free</Link>
+          </div>
+          <div className="relative overflow-hidden rounded-3xl border border-green-400/30 bg-green-400/10 p-6 shadow-[0_0_70px_rgba(34,197,94,.12)]">
+            <p className="badge w-fit">Premium Lifetime</p>
+            <h3 className="mt-5 text-4xl font-black">$100</h3>
+            <p className="mt-3 text-slate-300">Premium signals, beginner-to-advanced learning, demo practice, journal system, and lifetime support.</p>
+            <div className="mt-5 grid gap-2 text-sm text-green-50">
+              <p>✓ Premium signal access after approval</p>
+              <p>✓ Technical and fundamental analysis learning</p>
+              <p>✓ Risk management and psychology</p>
+              <p>✓ Lifetime community support</p>
+            </div>
+            <Link href="/register" className="btn-green mt-7 inline-block">Join Premium</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="page-shell">
+        <div className="grid gap-4 md:grid-cols-2">
           {faqs.map(([q, a]) => (
-            <details key={q} className="premium-card p-5 open:border-emerald-400/30">
-              <summary className="cursor-pointer text-lg font-bold">{q}</summary>
-              <p className="mt-3 text-slate-400">{a}</p>
-            </details>
+            <div className="card" key={q}>
+              <h3 className="text-lg font-black">{q}</h3>
+              <p className="mt-3 leading-7 text-slate-400">{a}</p>
+            </div>
           ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 pb-20 pt-10 lg:px-6">
-        <div className="premium-card bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-emerald-500/10 p-8 text-center lg:p-12">
-          <h2 className="text-3xl font-black md:text-5xl">Ready to learn before you risk?</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-slate-300">Join GSM Trading Lab and build your foundation with discipline, risk management, and practical market education.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/register" className="btn-green">Register Now</Link>
-            <a href="https://whatsapp.com/channel/0029Vb7BRlOKQuJHPFUykb0g" target="_blank" className="btn-dark">Join WhatsApp</a>
-          </div>
         </div>
       </section>
     </main>
