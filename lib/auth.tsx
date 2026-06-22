@@ -1,9 +1,10 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { User, onAuthStateChanged } from "firebase/auth";
+import { User, onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db, firebaseConfigured } from "@/lib/firebase";
 import { UserProfile } from "@/types";
+import { createOrValidateDeviceSession } from "@/lib/deviceSecurity";
 
 const AuthContext = createContext<{user: User | null; profile: UserProfile | null; loading: boolean}>({ user: null, profile: null, loading: true });
 
@@ -32,6 +33,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const created: UserProfile = { uid: u.uid, fullName: u.displayName || "GSM User", email: u.email || "", role: "user", status: "active", courseAccess: "none", paymentStatus: "none", createdAt: now, updatedAt: now };
         await setDoc(ref, created);
         setProfile(created);
+      }
+      const security = await createOrValidateDeviceSession(u, firebaseAuth);
+      if (!security.ok) {
+        setProfile(null);
+        setUser(null);
+        setLoading(false);
+        return;
       }
       setLoading(false);
     });
