@@ -26,6 +26,10 @@ const menu = [
       ["Market Tools", "/market-tools"],
       ["Market Dashboard", "/market-dashboard"],
       ["Market Terminal", "/market-terminal"],
+      ["Command Center", "/command-center"],
+      ["Portfolio Tracker", "/portfolio-tracker"],
+      ["Journal Analytics Pro", "/journal-analytics-pro"],
+      ["Liquidation Heatmap", "/liquidation-heatmap"],
       ["AI Terminal", "/ai-terminal"],
       ["Watchlist", "/watchlist"],
       ["News Terminal", "/news-terminal"],
@@ -103,7 +107,7 @@ export default function Nav() {
           {user ? (
             <>
               <Link className="btn-dark px-4 py-2" href="/dashboard">Dashboard</Link>
-              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link></>}
+              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link><Link className="btn-dark px-4 py-2" href="/admin/revenue-hub">Revenue</Link></>}
               <button className="btn-green px-4 py-2" onClick={() => auth && signOut(auth)}>Logout</button>
             </>
           ) : (
