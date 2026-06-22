@@ -6,110 +6,135 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { useAuth } from "@/lib/auth";
 
-const tools = [
-  { href: "/market-tools", label: "Market Tools" },
-  { href: "/signals", label: "Free Signals" },
-  { href: "/payments", label: "Payments" },
-  { href: "/register", label: "Register Course" }
+const menu = [
+  {
+    label: "Learn",
+    links: [
+      ["Start Here", "/start-here"],
+      ["Courses", "/courses"],
+      ["Admissions", "/admissions"],
+      ["Mentorship", "/mentorship"],
+      ["Class Schedule", "/class-schedule"],
+      ["Resources", "/resources"],
+    ],
+  },
+  {
+    label: "Trading",
+    links: [
+      ["Signals", "/signals"],
+      ["Performance", "/signal-performance"],
+      ["Market Tools", "/market-tools"],
+      ["Market Dashboard", "/market-dashboard"],
+      ["Market Terminal", "/market-terminal"],
+      ["AI Terminal", "/ai-terminal"],
+      ["Watchlist", "/watchlist"],
+      ["News Terminal", "/news-terminal"],
+      ["Strategy Library", "/strategy-library"],
+      ["Calculators", "/tools"],
+      ["Demo Trading", "/demo-trading"],
+      ["Journal", "/journal"],
+      ["Analysis", "/market-analysis"],
+      ["Market Summary", "/market-summary"],
+      ["Trade Review", "/trade-review"],
+      ["Risk Analysis", "/risk-analysis"],
+    ],
+  },
+  {
+    label: "Community",
+    links: [
+      ["Reviews", "/testimonials"],
+      ["Referral", "/referral-program"],
+      ["Community Rules", "/community"],
+      ["Blog", "/blog"],
+      ["Glossary", "/glossary"],
+      ["Roadmap", "/roadmap"],
+    ],
+  },
+  {
+    label: "Student",
+    links: [
+      ["Dashboard", "/dashboard"],
+      ["Progress", "/student-progress"],
+      ["Downloads", "/downloads"],
+      ["Certificates", "/certificates"],
+      ["Calendar", "/content-calendar"],
+      ["Onboarding", "/onboarding"],
+      ["Help Center", "/help-center"],
+      ["Mobile App", "/mobile-app"],
+    ],
+  },
 ];
-
-const company = [
-  { href: "/about", label: "About" },
-  { href: "/founder", label: "Mr. GSM" },
-  { href: "/contact", label: "Contact" }
-];
-
-function Dropdown({ title, items }: { title: string; items: { href: string; label: string }[] }) {
-  return (
-    <div className="group relative">
-      <button className="nav-link inline-flex items-center gap-1">
-        {title}
-        <span className="text-[10px] text-emerald-300 transition group-hover:rotate-180">▼</span>
-      </button>
-      <div className="pointer-events-none absolute left-0 top-9 w-56 translate-y-2 rounded-2xl border border-white/10 bg-slate-950/95 p-2 opacity-0 shadow-2xl shadow-emerald-500/10 backdrop-blur-xl transition group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-        {items.map((item) => (
-          <Link key={item.href} href={item.href} className="block rounded-xl px-4 py-3 text-sm text-slate-300 transition hover:bg-emerald-400/10 hover:text-emerald-300">
-            {item.label}
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default function Nav() {
   const { user, profile } = useAuth();
   const [open, setOpen] = useState(false);
 
-  const mainLinks = [
-    { href: "/", label: "Home" },
-    { href: "/courses", label: "Courses" },
-    { href: "/signals", label: "Signals" },
-    { href: "/market-tools", label: "Tools" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" }
-  ];
-
   return (
-    <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#050816]/80 backdrop-blur-2xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-6">
+    <nav className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-2xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         <Link href="/" className="group flex items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-2xl border border-emerald-400/30 bg-emerald-400/10 text-lg font-black text-emerald-300 shadow-lg shadow-emerald-500/10">G</span>
-          <span className="leading-tight">
-            <span className="block text-lg font-black tracking-tight"><span className="text-emerald-400">GSM</span> Trading Lab</span>
-            <span className="hidden text-[11px] uppercase tracking-[0.25em] text-slate-500 sm:block">Risk First</span>
-          </span>
+          <div className="grid h-11 w-11 place-items-center rounded-2xl border border-green-400/30 bg-green-400/10 shadow-[0_0_35px_rgba(34,197,94,.2)]">
+            <span className="text-sm font-black text-green-300">GSM</span>
+          </div>
+          <div className="leading-tight">
+            <p className="text-base font-black tracking-tight"><span className="text-green-400">GSM</span> Trading Lab</p>
+            <p className="hidden text-[11px] uppercase tracking-[0.25em] text-slate-500 sm:block">Risk first trading</p>
+          </div>
         </Link>
 
-        <div className="hidden items-center gap-7 text-sm font-semibold lg:flex">
-          <Link href="/" className="nav-link">Home</Link>
-          <Link href="/courses" className="nav-link">Courses</Link>
-          <Link href="/signals" className="nav-link">Signals</Link>
-          <Dropdown title="Tools" items={tools} />
-          <Dropdown title="Company" items={company} />
+        <div className="hidden items-center gap-1 lg:flex">
+          <Link className="nav-link" href="/pricing">Pricing</Link>
+          {menu.map((item) => (
+            <div className="nav-group" key={item.label}>
+              <button className="nav-link">{item.label} <span className="text-slate-500">⌄</span></button>
+              <div className="nav-menu">
+                {item.links.map(([label, href]) => (
+                  <Link key={href} href={href} className="nav-item">{label}</Link>
+                ))}
+              </div>
+            </div>
+          ))}
+          <Link className="nav-link" href="/risk-management">Risk</Link>
+          <Link className="nav-link" href="/mobile-app">App</Link>
+          <Link className="nav-link" href="/contact">Contact</Link>
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
           {user ? (
             <>
               <Link className="btn-dark px-4 py-2" href="/dashboard">Dashboard</Link>
-              {profile?.role !== "user" && <Link className="btn-dark px-4 py-2" href="/admin">Admin</Link>}
+              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link></>}
               <button className="btn-green px-4 py-2" onClick={() => auth && signOut(auth)}>Logout</button>
             </>
           ) : (
             <>
               <Link className="btn-dark px-4 py-2" href="/login">Login</Link>
-              <Link className="btn-green px-4 py-2" href="/signup">Signup</Link>
+              <Link className="btn-green px-4 py-2" href="/signup">Join Now</Link>
             </>
           )}
         </div>
 
-        <button onClick={() => setOpen((v) => !v)} className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-bold lg:hidden">
+        <button onClick={() => setOpen(!open)} className="btn-dark px-3 py-2 lg:hidden" aria-label="Open menu">
           {open ? "Close" : "Menu"}
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-slate-950/95 px-4 py-4 backdrop-blur-xl lg:hidden">
-          <div className="grid gap-2">
-            {mainLinks.map((link) => (
-              <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-slate-200">
-                {link.label}
-              </Link>
+        <div className="border-t border-white/10 bg-slate-950/95 px-4 py-5 lg:hidden">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Link className="mobile-item" href="/pricing">Pricing</Link>
+            <Link className="mobile-item" href="/risk-management">Risk Management</Link>
+            {menu.map((item) => (
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4" key={item.label}>
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-green-300">{item.label}</p>
+                <div className="grid gap-2">
+                  {item.links.map(([label, href]) => <Link className="mobile-sub" key={href} href={href}>{label}</Link>)}
+                </div>
+              </div>
             ))}
-            <div className="mt-2 grid grid-cols-2 gap-2">
-              {user ? (
-                <>
-                  <Link className="btn-dark text-center" href="/dashboard" onClick={() => setOpen(false)}>Dashboard</Link>
-                  <button className="btn-green" onClick={() => auth && signOut(auth)}>Logout</button>
-                </>
-              ) : (
-                <>
-                  <Link className="btn-dark text-center" href="/login" onClick={() => setOpen(false)}>Login</Link>
-                  <Link className="btn-green text-center" href="/signup" onClick={() => setOpen(false)}>Signup</Link>
-                </>
-              )}
-            </div>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {user ? <><Link className="btn-dark" href="/dashboard">Dashboard</Link><button className="btn-green" onClick={() => auth && signOut(auth)}>Logout</button></> : <><Link className="btn-dark" href="/login">Login</Link><Link className="btn-green" href="/signup">Signup</Link></>}
           </div>
         </div>
       )}
