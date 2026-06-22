@@ -9,11 +9,11 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gsmtradinglab.com"),
   title: {
-    default: "GSM Trading Lab | Learn Crypto Trading with Mr. GSM",
+    default: "GSM Trading Lab | Master Risk. Build Discipline. Trade With Confidence.",
     template: "%s | GSM Trading Lab",
   },
   description:
-    "Practical crypto trading education, risk management, premium market analysis, demo trading practice, and lifetime learning support with Mr. GSM.",
+    "Premium crypto trading education, market structure, risk management, demo practice, transparent signals, and community support built around discipline.",
   keywords: [
     "GSM Trading Lab",
     "Mr GSM",
@@ -29,14 +29,14 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://www.gsmtradinglab.com",
     siteName: "GSM Trading Lab",
-    title: "GSM Trading Lab | Learn Crypto Trading with Mr. GSM",
+    title: "GSM Trading Lab | Master Risk. Build Discipline. Trade With Confidence.",
     description:
-      "Responsible crypto trading education, technical analysis, futures basics, risk management, demo practice, and premium market analysis.",
+      "Risk-first crypto education, market analysis, demo practice, premium signals and disciplined trading systems.",
   },
   twitter: {
     card: "summary_large_image",
     title: "GSM Trading Lab",
-    description: "Learn crypto trading responsibly with Mr. GSM.",
+    description: "Master risk, build discipline, and trade with a structured process.",
   },
   manifest: "/manifest.webmanifest",
 };

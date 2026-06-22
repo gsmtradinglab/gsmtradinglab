@@ -1,37 +1,17 @@
 import Link from "next/link";
 
-const modes = [
-  { title: "Online Course", desc: "Learn from anywhere with structured lessons, resources, and community support.", price: "$100 lifetime" },
-  { title: "Physical Classes", desc: "In-person learning for students who prefer classroom guidance and practical examples.", price: "$150" },
-  { title: "One-on-One Mentorship", desc: "Private coaching focused on your mistakes, risk management, and trading plan.", price: "Custom" },
-];
-
-export default function LearningModesPage() {
+export default function Page() {
   return (
-    <main className="section">
-      <div className="container">
-        <span className="eyebrow">Learning Modes</span>
-        <h1>Choose how you want to learn trading.</h1>
-        <p className="muted max">
-          GSM Trading Lab is built for practical learning, risk discipline, and long-term consistency.
-          Pick the learning mode that fits your schedule and experience level.
-        </p>
-
-        <div className="grid3 mt">
-          {modes.map((mode) => (
-            <div className="glass-card" key={mode.title}>
-              <h3>{mode.title}</h3>
-              <p className="muted">{mode.desc}</p>
-              <strong className="green">{mode.price}</strong>
-            </div>
-          ))}
+    <main className="page-shell">
+      <section className="rounded-[2rem] border border-emerald-400/20 bg-gradient-to-br from-emerald-400/10 via-slate-900/80 to-cyan-400/5 p-8 shadow-2xl shadow-black/30">
+        <p className="badge w-fit">GSM Trading Lab</p>
+        <h1 className="mt-5 text-4xl font-black md:text-6xl">Learning Modes</h1>
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">Online, physical, one-on-one mentorship and demo-practice learning paths for every student level.</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link className="btn-green" href="/dashboard">Open Dashboard</Link>
+          <Link className="btn-dark" href="/contact">Contact Support</Link>
         </div>
-
-        <div className="cta-row mt">
-          <Link className="btn primary" href="/register">Register Now</Link>
-          <Link className="btn ghost" href="/contact">Talk to Support</Link>
-        </div>
-      </div>
+      </section>
     </main>
   );
 }

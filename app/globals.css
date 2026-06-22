@@ -130,3 +130,52 @@ body::before {
 .section-head { max-width: 760px; }
 @keyframes scan { from { transform: translateX(-20%); } to { transform: translateX(20%); } }
 @keyframes shine { 0%, 70% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+/* Final crypto OS redesign patch */
+.crypto-orbit {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(16,185,129,.16), transparent 18rem),
+    radial-gradient(circle at 88% 18%, rgba(34,211,238,.12), transparent 22rem),
+    radial-gradient(circle at 50% 80%, rgba(59,130,246,.10), transparent 26rem);
+}
+.crypto-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255,255,255,.10);
+  background: linear-gradient(145deg, rgba(15,23,42,.82), rgba(2,6,23,.86));
+  padding: 1.5rem;
+  box-shadow: 0 30px 80px rgba(0,0,0,.22);
+  backdrop-filter: blur(24px);
+  transition: .28s ease;
+}
+.crypto-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -50% -20%;
+  height: 120px;
+  background: radial-gradient(circle, rgba(16,185,129,.18), transparent 70%);
+  opacity: 0;
+  transition: .28s ease;
+}
+.crypto-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(16,185,129,.38);
+  box-shadow: 0 30px 90px rgba(16,185,129,.10);
+}
+.crypto-card:hover::after { opacity: 1; }
+.admin-command-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.admin-command-card {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255,255,255,.10);
+  background: linear-gradient(145deg, rgba(15,23,42,.88), rgba(2,6,23,.92));
+  padding: 1.25rem;
+  box-shadow: 0 25px 70px rgba(0,0,0,.22);
+}

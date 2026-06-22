@@ -14,8 +14,9 @@ import {
 import { db, firebaseConfigured } from "@/lib/firebase";
 import { useAuth } from "@/lib/auth";
 import SignalForm from "@/components/SignalForm";
+import SiteSettingsManager from "@/components/SiteSettingsManager";
 
-type AdminTab = "overview" | "users" | "registrations" | "payments" | "signals" | "settings";
+type AdminTab = "overview" | "site" | "users" | "registrations" | "payments" | "signals" | "settings";
 
 function csvDownload(name: string, rows: Record<string, unknown>[]) {
   if (!rows.length) return;
@@ -154,15 +155,15 @@ export default function Admin() {
     setMsg("Payment settings saved. Latest record can be used as current payment details.");
   }
 
-  const tabs: AdminTab[] = ["overview", "users", "registrations", "payments", "signals", "settings"];
+  const tabs: AdminTab[] = ["overview", "site", "users", "registrations", "payments", "signals", "settings"];
 
   return (
     <main className="page-shell">
       <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-slate-900/90 via-slate-950/90 to-green-950/20 p-7 shadow-2xl shadow-black/30">
         <div className="absolute right-8 top-8 h-32 w-32 rounded-full bg-green-400/10 blur-3xl" />
-        <p className="badge mb-4 inline-flex">Admin Command Center</p>
-        <h1 className="text-4xl font-black md:text-5xl">Admin Panel</h1>
-        <p className="mt-3 max-w-3xl text-slate-400">Manage users, registrations, payments, premium access, signal publishing, and platform operations from one clean dashboard.</p>
+        <p className="badge mb-4 inline-flex">Crypto Control Room</p>
+        <h1 className="text-4xl font-black md:text-5xl">GSM Admin OS</h1>
+        <p className="mt-3 max-w-3xl text-slate-400">Control the public website, homepage copy, social handles, users, premium access, payments, signals, registrations and operational settings from one admin command center.</p>
       </section>
 
       <div className="mt-8 flex flex-wrap gap-2 rounded-[2rem] border border-white/10 bg-white/[0.03] p-2 backdrop-blur-xl">
@@ -172,6 +173,12 @@ export default function Admin() {
           </button>
         ))}
       </div>
+
+      {tab === "site" && (
+        <section className="mt-8">
+          <SiteSettingsManager />
+        </section>
+      )}
 
       {tab === "overview" && (
         <section className="mt-8 grid gap-5 md:grid-cols-6">

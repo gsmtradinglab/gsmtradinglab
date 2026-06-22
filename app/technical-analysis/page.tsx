@@ -1,12 +1,17 @@
-export default function TechnicalAnalysisPage() {
+import Link from "next/link";
+
+export default function Page() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-12">
-      <p className="text-emerald-400 font-bold">GSM Trading Lab</p>
-      <h1 className="mt-3 text-4xl font-black">Technical Analysis</h1>
-      <div className="card mt-8 space-y-4 text-slate-300">
-        <p>Learn practical technical analysis with market structure, support and resistance, trendlines, candlestick behavior, liquidity zones, risk management, and trade planning.</p>
-        <p>This content is educational only. No trade idea is financial advice or guaranteed profit.</p>
-      </div>
+    <main className="page-shell">
+      <section className="rounded-[2rem] border border-emerald-400/20 bg-gradient-to-br from-emerald-400/10 via-slate-900/80 to-cyan-400/5 p-8 shadow-2xl shadow-black/30">
+        <p className="badge w-fit">GSM Trading Lab</p>
+        <h1 className="mt-5 text-4xl font-black md:text-6xl">Technical Analysis</h1>
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">Learn market structure, support/resistance, liquidity zones, trend analysis, candles, risk planning and disciplined execution.</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link className="btn-green" href="/dashboard">Open Dashboard</Link>
+          <Link className="btn-dark" href="/contact">Contact Support</Link>
+        </div>
+      </section>
     </main>
   );
 }

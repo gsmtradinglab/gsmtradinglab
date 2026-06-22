@@ -1,12 +1,17 @@
-export default function RefundPolicyPage() {
+import Link from "next/link";
+
+export default function Page() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-12">
-      <h1 className="text-4xl font-black">Refund Policy</h1>
-      <div className="card mt-8 space-y-4 text-slate-300">
-        <p>Refund requests are reviewed case by case according to access usage, course delivery, support history, and payment verification.</p>
-        <p>Signals, market analysis, and educational outcomes are not guaranteed profit services.</p>
-        <p>For refund support, contact GSM Trading Lab with your registered email and payment proof.</p>
-      </div>
+    <main className="page-shell">
+      <section className="rounded-[2rem] border border-emerald-400/20 bg-gradient-to-br from-emerald-400/10 via-slate-900/80 to-cyan-400/5 p-8 shadow-2xl shadow-black/30">
+        <p className="badge w-fit">GSM Trading Lab</p>
+        <h1 className="mt-5 text-4xl font-black md:text-6xl">Refund Policy</h1>
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">Refund requests are reviewed by admin based on learning access, service usage and eligibility conditions.</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link className="btn-green" href="/dashboard">Open Dashboard</Link>
+          <Link className="btn-dark" href="/contact">Contact Support</Link>
+        </div>
+      </section>
     </main>
   );
 }

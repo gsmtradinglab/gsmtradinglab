@@ -1,13 +1,17 @@
-export default function RiskDisclaimerPage() {
+import Link from "next/link";
+
+export default function Page() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-12">
-      <p className="text-emerald-400 font-bold">Risk First. Profit Later.</p>
-      <h1 className="mt-3 text-4xl font-black">Risk Disclaimer</h1>
-      <div className="card mt-8 space-y-4 text-slate-300">
-        <p>Trading crypto, forex, futures, indices, commodities, and derivatives involves high risk and can result in loss of capital.</p>
-        <p>GSM Trading Lab provides education, analysis, community support, and learning resources only. We do not guarantee profit, fixed returns, or financial success.</p>
-        <p>Always use stop loss, manage position size, and never risk money you cannot afford to lose.</p>
-      </div>
+    <main className="page-shell">
+      <section className="rounded-[2rem] border border-emerald-400/20 bg-gradient-to-br from-emerald-400/10 via-slate-900/80 to-cyan-400/5 p-8 shadow-2xl shadow-black/30">
+        <p className="badge w-fit">GSM Trading Lab</p>
+        <h1 className="mt-5 text-4xl font-black md:text-6xl">Risk Disclaimer</h1>
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">Trading involves high risk. GSM Trading Lab provides education, analysis and tools only. No profit is guaranteed.</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link className="btn-green" href="/dashboard">Open Dashboard</Link>
+          <Link className="btn-dark" href="/contact">Contact Support</Link>
+        </div>
+      </section>
     </main>
   );
 }
