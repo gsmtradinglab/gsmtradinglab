@@ -24,6 +24,9 @@ export default function Dashboard() {
 
     <div className="mt-8 grid gap-4 md:grid-cols-6">
       <Link className="btn-dark" href="/register">Register Course</Link>
+      <Link className="btn-dark" href="/admissions">Admissions</Link>
+      <Link className="btn-dark" href="/mentorship">Mentorship</Link>
+      <Link className="btn-dark" href="/class-schedule">Class Schedule</Link>
       <Link className="btn-dark" href="/payments">Payment Proof</Link>
       <Link className="btn-dark" href="/signals">My Signals</Link>
       <Link className="btn-dark" href="/signal-performance">Performance</Link>
@@ -41,6 +44,7 @@ export default function Dashboard() {
       <Link className="btn-dark" href="/system-status">System Status</Link>
       <Link className="btn-dark" href="/onboarding">Onboarding</Link>
       <Link className="btn-dark" href="/help-center">Help Center</Link>
+      <Link className="btn-dark" href="/risk-acknowledgement">Risk Acknowledgement</Link>
     </div>
 
     {profile?.role !== "user" && <div className="mt-6 flex flex-wrap gap-3">
@@ -53,6 +57,8 @@ export default function Dashboard() {
       <Link className="btn-dark inline-block" href="/admin/user-sop">User SOP</Link>
       <Link className="btn-dark inline-block" href="/admin/payment-sop">Payment SOP</Link>
       <Link className="btn-dark inline-block" href="/admin/signal-sop">Signal SOP</Link>
+      <Link className="btn-dark inline-block" href="/admin/deployment-sop">Deployment SOP</Link>
+      <Link className="btn-dark inline-block" href="/admin/incident-response">Incident Response</Link>
     </div>}
 
     <section className="mt-8 grid gap-4 md:grid-cols-3">
