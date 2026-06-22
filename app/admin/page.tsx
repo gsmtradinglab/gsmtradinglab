@@ -16,7 +16,7 @@ import { useAuth } from "@/lib/auth";
 import SignalForm from "@/components/SignalForm";
 import SiteSettingsManager from "@/components/SiteSettingsManager";
 
-type AdminTab = "overview" | "site" | "users" | "registrations" | "payments" | "signals" | "settings";
+type AdminTab = "overview" | "site" | "users" | "security" | "registrations" | "payments" | "signals" | "settings";
 
 function csvDownload(name: string, rows: Record<string, unknown>[]) {
   if (!rows.length) return;
@@ -155,7 +155,7 @@ export default function Admin() {
     setMsg("Payment settings saved. Latest record can be used as current payment details.");
   }
 
-  const tabs: AdminTab[] = ["overview", "site", "users", "registrations", "payments", "signals", "settings"];
+  const tabs: AdminTab[] = ["overview", "site", "users", "security", "registrations", "payments", "signals", "settings"];
 
   return (
     <main className="page-shell">
@@ -191,6 +191,15 @@ export default function Admin() {
           <div className="card md:col-span-2"><b>Signal Wins</b><p className="text-3xl text-green-400">{stats.wins}</p></div>
           <div className="card md:col-span-2"><b>Signal Losses</b><p className="text-3xl text-red-300">{stats.losses}</p></div>
           <div className="card md:col-span-2"><b>Active Signals</b><p className="text-3xl text-amber-300">{stats.activeSignals}</p></div>
+        </section>
+      )}
+
+
+      {tab === "security" && (
+        <section className="mt-8 card">
+          <h2 className="text-2xl font-black">Device Security</h2>
+          <p className="mt-2 text-slate-300">One-account-one-device protection, device locks, blocked attempts and security logs.</p>
+          <a className="btn-green mt-5 inline-flex" href="/admin/device-security">Open Device Security Center</a>
         </section>
       )}
 

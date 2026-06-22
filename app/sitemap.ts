@@ -114,6 +114,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/admin/cms-data",
     "/admin/site-settings",
     "/admin/data-seed",
+    "/admin/device-security",
     "/final-launch",
     "/admin/final-launch",
 ];
