@@ -111,6 +111,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/admin/challenge-manager",
     "/admin/badge-manager",
     "/admin/event-manager",
+    "/admin/cms-data",
+    "/admin/site-settings",
+    "/admin/data-seed",
   ];
   return pages.map((path) => ({ url: `${base}${path}`, lastModified: new Date(), changeFrequency: "weekly", priority: path === "" ? 1 : 0.7 }));
 }
