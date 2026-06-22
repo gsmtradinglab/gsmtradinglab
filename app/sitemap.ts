@@ -114,6 +114,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/admin/cms-data",
     "/admin/site-settings",
     "/admin/data-seed",
-  ];
+    { url: `${baseUrl}/final-launch`, lastModified: new Date() },
+  { url: `${baseUrl}/admin/final-launch`, lastModified: new Date() },
+];
   return pages.map((path) => ({ url: `${base}${path}`, lastModified: new Date(), changeFrequency: "weekly", priority: path === "" ? 1 : 0.7 }));
 }
