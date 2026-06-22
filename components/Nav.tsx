@@ -6,78 +6,32 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { useAuth } from "@/lib/auth";
 
-const groups = [
-  {
-    label: "Learn",
-    items: [
-      ["Start Here", "/start-here"],
-      ["Courses", "/courses"],
-      ["Admissions", "/admissions"],
-      ["Mentorship", "/mentorship"],
-      ["Class Schedule", "/class-schedule"],
-      ["Resources", "/resources"],
-    ],
-  },
-  {
-    label: "Trading",
-    items: [
-      ["Signals", "/signals"],
-      ["Performance", "/signal-performance"],
-      ["Market Tools", "/market-tools"],
-      ["Calculators", "/tools"],
-      ["Demo Trading", "/demo-trading"],
-      ["Journal", "/journal"],
-      ["Market Analysis", "/market-analysis"],
-    ],
-  },
-  {
-    label: "Community",
-    items: [
-      ["Reviews", "/testimonials"],
-      ["Referral", "/referral-program"],
-      ["Community Rules", "/community"],
-      ["Blog", "/blog"],
-      ["Glossary", "/glossary"],
-      ["Roadmap", "/roadmap"],
-    ],
-  },
-  {
-    label: "Student",
-    items: [
-      ["Progress", "/student-progress"],
-      ["Downloads", "/downloads"],
-      ["Certificates", "/certificates"],
-      ["Onboarding", "/onboarding"],
-      ["Notifications", "/notifications"],
-      ["Profile", "/profile"],
-    ],
-  },
-  {
-    label: "Company",
-    items: [
-      ["Pricing", "/pricing"],
-      ["About", "/about"],
-      ["Founder", "/founder"],
-      ["FAQ", "/faq"],
-      ["Status", "/system-status"],
-      ["Help Center", "/help-center"],
-      ["Contact", "/contact"],
-    ],
-  },
+const tools = [
+  { href: "/market-tools", label: "Market Tools" },
+  { href: "/signals", label: "Free Signals" },
+  { href: "/payments", label: "Payments" },
+  { href: "/register", label: "Register Course" }
 ];
 
-function Dropdown({ label, items }: { label: string; items: string[][] }) {
+const company = [
+  { href: "/about", label: "About" },
+  { href: "/founder", label: "Mr. GSM" },
+  { href: "/contact", label: "Contact" }
+];
+
+function Dropdown({ title, items }: { title: string; items: { href: string; label: string }[] }) {
   return (
     <div className="group relative">
-      <button className="nav-pill">{label}</button>
-      <div className="pointer-events-none absolute left-0 top-full z-50 mt-3 w-64 translate-y-2 rounded-2xl border border-emerald-400/20 bg-slate-950/95 p-3 opacity-0 shadow-2xl shadow-emerald-950/30 backdrop-blur-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-        <div className="grid gap-1">
-          {items.map(([name, href]) => (
-            <Link key={href} href={href} className="rounded-xl px-4 py-3 text-sm text-slate-300 transition hover:bg-emerald-400/10 hover:text-emerald-300">
-              {name}
-            </Link>
-          ))}
-        </div>
+      <button className="nav-link inline-flex items-center gap-1">
+        {title}
+        <span className="text-[10px] text-emerald-300 transition group-hover:rotate-180">▼</span>
+      </button>
+      <div className="pointer-events-none absolute left-0 top-9 w-56 translate-y-2 rounded-2xl border border-white/10 bg-slate-950/95 p-2 opacity-0 shadow-2xl shadow-emerald-500/10 backdrop-blur-xl transition group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+        {items.map((item) => (
+          <Link key={item.href} href={item.href} className="block rounded-xl px-4 py-3 text-sm text-slate-300 transition hover:bg-emerald-400/10 hover:text-emerald-300">
+            {item.label}
+          </Link>
+        ))}
       </div>
     </div>
   );
@@ -87,23 +41,35 @@ export default function Nav() {
   const { user, profile } = useAuth();
   const [open, setOpen] = useState(false);
 
+  const mainLinks = [
+    { href: "/", label: "Home" },
+    { href: "/courses", label: "Courses" },
+    { href: "/signals", label: "Signals" },
+    { href: "/market-tools", label: "Tools" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" }
+  ];
+
   return (
-    <nav className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-2xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-400 text-lg font-black text-slate-950 shadow-lg shadow-emerald-500/20">G</span>
+    <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#050816]/80 backdrop-blur-2xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-6">
+        <Link href="/" className="group flex items-center gap-3">
+          <span className="grid h-11 w-11 place-items-center rounded-2xl border border-emerald-400/30 bg-emerald-400/10 text-lg font-black text-emerald-300 shadow-lg shadow-emerald-500/10">G</span>
           <span className="leading-tight">
             <span className="block text-lg font-black tracking-tight"><span className="text-emerald-400">GSM</span> Trading Lab</span>
-            <span className="hidden text-xs text-slate-400 sm:block">Risk-first crypto education</span>
+            <span className="hidden text-[11px] uppercase tracking-[0.25em] text-slate-500 sm:block">Risk First</span>
           </span>
         </Link>
 
-        <div className="hidden items-center gap-1 lg:flex">
-          <Link href="/" className="nav-pill">Home</Link>
-          {groups.map((g) => <Dropdown key={g.label} label={g.label} items={g.items} />)}
+        <div className="hidden items-center gap-7 text-sm font-semibold lg:flex">
+          <Link href="/" className="nav-link">Home</Link>
+          <Link href="/courses" className="nav-link">Courses</Link>
+          <Link href="/signals" className="nav-link">Signals</Link>
+          <Dropdown title="Tools" items={tools} />
+          <Dropdown title="Company" items={company} />
         </div>
 
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="hidden items-center gap-2 lg:flex">
           {user ? (
             <>
               <Link className="btn-dark px-4 py-2" href="/dashboard">Dashboard</Link>
@@ -118,26 +84,31 @@ export default function Nav() {
           )}
         </div>
 
-        <button onClick={() => setOpen((v) => !v)} className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/5 lg:hidden" aria-label="Open menu">
-          <span className="text-2xl">☰</span>
+        <button onClick={() => setOpen((v) => !v)} className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-bold lg:hidden">
+          {open ? "Close" : "Menu"}
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-slate-950/95 px-4 py-4 lg:hidden">
-          <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2">
-            {groups.map((g) => (
-              <div key={g.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-3">
-                <div className="mb-2 text-sm font-bold text-emerald-300">{g.label}</div>
-                <div className="grid grid-cols-2 gap-1">
-                  {g.items.map(([name, href]) => (
-                    <Link onClick={() => setOpen(false)} key={href} href={href} className="rounded-lg px-3 py-2 text-sm text-slate-300 hover:bg-white/10">{name}</Link>
-                  ))}
-                </div>
-              </div>
+        <div className="border-t border-white/10 bg-slate-950/95 px-4 py-4 backdrop-blur-xl lg:hidden">
+          <div className="grid gap-2">
+            {mainLinks.map((link) => (
+              <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-slate-200">
+                {link.label}
+              </Link>
             ))}
-            <div className="flex gap-2 sm:col-span-2">
-              {user ? <><Link className="btn-dark flex-1 text-center" href="/dashboard">Dashboard</Link><button className="btn-green flex-1" onClick={() => auth && signOut(auth)}>Logout</button></> : <><Link className="btn-dark flex-1 text-center" href="/login">Login</Link><Link className="btn-green flex-1 text-center" href="/signup">Signup</Link></>}
+            <div className="mt-2 grid grid-cols-2 gap-2">
+              {user ? (
+                <>
+                  <Link className="btn-dark text-center" href="/dashboard" onClick={() => setOpen(false)}>Dashboard</Link>
+                  <button className="btn-green" onClick={() => auth && signOut(auth)}>Logout</button>
+                </>
+              ) : (
+                <>
+                  <Link className="btn-dark text-center" href="/login" onClick={() => setOpen(false)}>Login</Link>
+                  <Link className="btn-green text-center" href="/signup" onClick={() => setOpen(false)}>Signup</Link>
+                </>
+              )}
             </div>
           </div>
         </div>

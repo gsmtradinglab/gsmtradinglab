@@ -3,14 +3,9 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
     function isOwner(userId) { return signedIn() && request.auth.uid == userId; }
-    function userDoc() { return get(/databases/$(database)/documents/users/$(request.auth.uid)); }
     function isAdmin() {
       return signedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
-        userDoc().data.role in ["admin", "superAdmin"];
-    }
-    function hasPremium() {
-      return signedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
-        userDoc().data.courseAccess in ["premium", "online", "physical"];
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["admin", "superAdmin"];
     }
 
     match /users/{userId} {
@@ -33,16 +28,12 @@ service cloud.firestore {
       allow update, delete: if isAdmin();
     }
 
-    match /paymentSettings/{id} {
-      allow read: if true;
-      allow create, update, delete: if isAdmin();
-    }
-
     match /signals/{id} {
       allow read: if resource.data.visibility == "public"
         || (signedIn() && resource.data.visibility == "members")
-        || (signedIn() && resource.data.visibility == "premium" && (hasPremium() || isAdmin()))
-        || (signedIn() && resource.data.visibility == "selected" && request.auth.uid in resource.data.selectedUserIds)
+        || (signedIn() && resource.data.visibility == "premium" && (
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.courseAccess in ["premium", "online", "physical"] || isAdmin()
+        ))
         || isAdmin();
       allow create, update, delete: if isAdmin();
     }
@@ -51,67 +42,6 @@ service cloud.firestore {
       allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
       allow read: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
       allow update, delete: if isAdmin();
-    }
-
-    match /announcements/{id} {
-      allow read: if resource.data.status == "published" || isAdmin();
-      allow create, update, delete: if isAdmin();
-    }
-
-    match /blogs/{id} {
-      allow read: if resource.data.status == "published" || isAdmin();
-      allow create, update, delete: if isAdmin();
-    }
-
-    match /accountManagementInquiries/{id} {
-      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
-      allow read: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
-      allow update, delete: if isAdmin();
-    }
-
-    match /websiteSettings/{id} {
-      allow read: if true;
-      allow create, update, delete: if isAdmin();
-    }
-
-
-    match /demoTrades/{id} {
-      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
-      allow read, update, delete: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
-    }
-
-    match /demoAccounts/{id} {
-      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
-      allow read, update, delete: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
-    }
-
-    match /tradingJournals/{id} {
-      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
-      allow read, update, delete: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
-    }
-
-    match /resources/{id} {
-      allow read: if resource.data.accessLevel == "public"
-        || (signedIn() && resource.data.accessLevel == "members")
-        || (signedIn() && resource.data.accessLevel == "premium" && (hasPremium() || isAdmin()))
-        || isAdmin();
-      allow create, update, delete: if isAdmin();
-    }
-
-
-    match /courses/{id} {
-      allow read: if true;
-      allow create, update, delete: if isAdmin();
-    }
-
-    match /marketAnalysis/{id} {
-      allow read: if true;
-      allow create, update, delete: if isAdmin();
-    }
-
-    match /notifications/{id} {
-      allow read: if signedIn();
-      allow create, update, delete: if isAdmin();
     }
 
     match /{document=**} {
