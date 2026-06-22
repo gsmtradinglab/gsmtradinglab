@@ -53,6 +53,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/journal-analytics-pro",
     "/liquidation-heatmap",
     "/admin/revenue-hub",
+    "/ai-coach",
+    "/risk-engine",
+    "/membership",
+    "/lead-funnel",
+    "/admin/lead-crm",
+    "/admin/automation-center",
+
     "/ai-terminal",
     "/market-summary",
     "/trade-review",
