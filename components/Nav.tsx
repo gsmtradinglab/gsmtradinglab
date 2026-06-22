@@ -26,6 +26,9 @@ const menu = [
     label: "Trading",
     links: [
       ["Signals", "/signals"],
+      ["Premium Signals", "/premium-signals"],
+      ["Signal Lab", "/signal-lab"],
+      ["Trade Setups", "/trade-setups"],
       ["Performance", "/signal-performance"],
       ["Market Tools", "/market-tools"],
       ["Market Dashboard", "/market-dashboard"],
@@ -115,7 +118,7 @@ export default function Nav() {
           {user ? (
             <>
               <Link className="btn-dark px-4 py-2" href="/dashboard">Dashboard</Link>
-              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link><Link className="btn-dark px-4 py-2" href="/admin/revenue-hub">Revenue</Link><Link className="btn-dark px-4 py-2" href="/admin/lead-crm">CRM</Link><Link className="btn-dark px-4 py-2" href="/admin/student-success">Students</Link></>}
+              {profile?.role !== "user" && <><Link className="btn-dark px-4 py-2" href="/admin">Admin</Link><Link className="btn-dark px-4 py-2" href="/admin/analytics-pro">Analytics</Link><Link className="btn-dark px-4 py-2" href="/admin/revenue-hub">Revenue</Link><Link className="btn-dark px-4 py-2" href="/admin/lead-crm">CRM</Link><Link className="btn-dark px-4 py-2" href="/admin/student-success">Students</Link><Link className="btn-dark px-4 py-2" href="/admin/signal-desk">Signal Desk</Link></>}
               <button className="btn-green px-4 py-2" onClick={() => auth && signOut(auth)}>Logout</button>
             </>
           ) : (
