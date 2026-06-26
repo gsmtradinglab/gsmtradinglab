@@ -10,13 +10,14 @@ import {
   orderBy,
   query,
   updateDoc,
+  setDoc,
 } from "firebase/firestore";
 import { db, firebaseConfigured } from "@/lib/firebase";
 import { useAuth } from "@/lib/auth";
 import SignalForm from "@/components/SignalForm";
-import SiteSettingsManager from "@/components/SiteSettingsManager";
+import BrandLogo from "@/components/BrandLogo";
 
-type AdminTab = "overview" | "site" | "users" | "security" | "registrations" | "payments" | "signals" | "settings";
+type AdminTab = "overview" | "site" | "users" | "registrations" | "payments" | "signals" | "settings";
 
 function csvDownload(name: string, rows: Record<string, unknown>[]) {
   if (!rows.length) return;
@@ -50,6 +51,19 @@ export default function Admin() {
   const [tab, setTab] = useState<AdminTab>("overview");
   const [search, setSearch] = useState("");
   const [msg, setMsg] = useState("");
+  const [brandSettings, setBrandSettings] = useState({
+    heroTitle: "Master Risk. Build Discipline. Read Markets.",
+    heroSubtitle: "A premium trading education platform for disciplined learners.",
+    whatsappUrl: "https://whatsapp.com/channel/0029Vb7BRlOKQuJHPFUykb0g",
+    instagram: "@gsmtradinglab",
+    facebook: "@gsmtradinglab",
+    tiktok: "@gsmtradinglab",
+    youtube: "@gsmtradinglab",
+    twitter: "@gsmtradinglab",
+    linkedin: "@gsmtradinglab",
+    tradingview: "@gsmtradinglab",
+    telegram: "@gsmtradinglab",
+  });
   const [settings, setSettings] = useState({
     easypaisaNumber: "",
     jazzcashNumber: "",
@@ -147,6 +161,13 @@ export default function Admin() {
     await load();
   }
 
+  async function saveBrandSettings(e: React.FormEvent) {
+    e.preventDefault();
+    if (!db) return;
+    await setDoc(doc(db, "websiteSettings", "main"), { ...brandSettings, updatedAt: new Date().toISOString() }, { merge: true });
+    setMsg("Website branding/settings saved. Public pages can read websiteSettings/main.");
+  }
+
   async function saveSettings(e: React.FormEvent) {
     e.preventDefault();
     if (!db) return;
@@ -155,15 +176,16 @@ export default function Admin() {
     setMsg("Payment settings saved. Latest record can be used as current payment details.");
   }
 
-  const tabs: AdminTab[] = ["overview", "site", "users", "security", "registrations", "payments", "signals", "settings"];
+  const tabs: AdminTab[] = ["overview", "site", "users", "registrations", "payments", "signals", "settings"];
 
   return (
     <main className="page-shell">
       <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-slate-900/90 via-slate-950/90 to-green-950/20 p-7 shadow-2xl shadow-black/30">
         <div className="absolute right-8 top-8 h-32 w-32 rounded-full bg-green-400/10 blur-3xl" />
-        <p className="badge mb-4 inline-flex">Crypto Control Room</p>
-        <h1 className="text-4xl font-black md:text-5xl">GSM Admin OS</h1>
-        <p className="mt-3 max-w-3xl text-slate-400">Control the public website, homepage copy, social handles, users, premium access, payments, signals, registrations and operational settings from one admin command center.</p>
+        <div className="mb-5"><BrandLogo variant="mark" href="/" /></div>
+        <p className="badge mb-4 inline-flex">Enterprise Control Center</p>
+        <h1 className="text-4xl font-black md:text-5xl">GSM Admin Command</h1>
+        <p className="mt-3 max-w-3xl text-slate-400">Control users, payments, signals, content, website branding, social handles, security, and platform operations from one dashboard.</p>
       </section>
 
       <div className="mt-8 flex flex-wrap gap-2 rounded-[2rem] border border-white/10 bg-white/[0.03] p-2 backdrop-blur-xl">
@@ -173,12 +195,6 @@ export default function Admin() {
           </button>
         ))}
       </div>
-
-      {tab === "site" && (
-        <section className="mt-8">
-          <SiteSettingsManager />
-        </section>
-      )}
 
       {tab === "overview" && (
         <section className="mt-8 grid gap-5 md:grid-cols-6">
@@ -195,11 +211,26 @@ export default function Admin() {
       )}
 
 
-      {tab === "security" && (
-        <section className="mt-8 card">
-          <h2 className="text-2xl font-black">Device Security</h2>
-          <p className="mt-2 text-slate-300">One-account-one-device protection, device locks, blocked attempts and security logs.</p>
-          <a className="btn-green mt-5 inline-flex" href="/admin/device-security">Open Device Security Center</a>
+
+      {tab === "site" && (
+        <section className="mt-8 grid gap-6 lg:grid-cols-[.8fr_1.2fr]">
+          <div className="card">
+            <BrandLogo variant="footer" href="/" />
+            <h2 className="mt-5 text-2xl font-black">Website Branding Control</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-400">Edit hero copy, social handles, WhatsApp channel, and brand assets from Firestore collection <b>websiteSettings/main</b>. Keep all official handles as @gsmtradinglab unless changed.</p>
+          </div>
+          <form onSubmit={saveBrandSettings} className="card grid gap-4">
+            <input className="input" value={brandSettings.heroTitle} onChange={(e) => setBrandSettings({ ...brandSettings, heroTitle: e.target.value })} placeholder="Hero title" />
+            <textarea className="input min-h-28" value={brandSettings.heroSubtitle} onChange={(e) => setBrandSettings({ ...brandSettings, heroSubtitle: e.target.value })} placeholder="Hero subtitle" />
+            <input className="input" value={brandSettings.whatsappUrl} onChange={(e) => setBrandSettings({ ...brandSettings, whatsappUrl: e.target.value })} placeholder="WhatsApp Channel URL" />
+            <div className="grid gap-3 md:grid-cols-2">
+              {(["instagram", "facebook", "tiktok", "youtube", "twitter", "linkedin", "tradingview", "telegram"] as const).map((key) => (
+                <input key={key} className="input" value={brandSettings[key]} onChange={(e) => setBrandSettings({ ...brandSettings, [key]: e.target.value })} placeholder={`${key} handle`} />
+              ))}
+            </div>
+            <button className="btn-green">Save Website Settings</button>
+            {msg && <p className="text-slate-300">{msg}</p>}
+          </form>
         </section>
       )}
 

@@ -9,14 +9,14 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gsmtradinglab.com"),
   title: {
-    default: "GSM Trading Lab | Master Risk. Build Discipline. Trade With Confidence.",
+    default: "GSM Trading Lab | Master Risk. Build Discipline.",
     template: "%s | GSM Trading Lab",
   },
   description:
-    "Premium crypto trading education, market structure, risk management, demo practice, transparent signals, and community support built around discipline.",
+    "Practical trading education, market analysis, demo trading practice, premium signals, and risk-first learning support under GSM Trading Lab.",
   keywords: [
     "GSM Trading Lab",
-    "Mr GSM",
+    "GSM Trading Lab",
     "crypto trading course",
     "learn crypto trading",
     "crypto trading Pakistan",
@@ -29,15 +29,17 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://www.gsmtradinglab.com",
     siteName: "GSM Trading Lab",
-    title: "GSM Trading Lab | Master Risk. Build Discipline. Trade With Confidence.",
+    images: [{ url: "/brand/gsm-banner-dark.jpg", width: 1200, height: 628, alt: "GSM Trading Lab" }],
+    title: "GSM Trading Lab | Master Risk. Build Discipline.",
     description:
-      "Risk-first crypto education, market analysis, demo practice, premium signals and disciplined trading systems.",
+      "Risk-first trading education, technical analysis, demo practice, signals, and premium market learning ecosystem.",
   },
   twitter: {
     card: "summary_large_image",
     title: "GSM Trading Lab",
-    description: "Master risk, build discipline, and trade with a structured process.",
+    description: "Master risk, build discipline, and learn markets with GSM Trading Lab.",
   },
+  icons: { icon: "/brand/gsm-logo-dark-compact.jpg", apple: "/brand/gsm-logo-light-compact.jpg" },
   manifest: "/manifest.webmanifest",
 };
 

@@ -1,10 +1,13 @@
 {
   "name": "GSM Trading Lab",
   "short_name": "GSM Lab",
-  "description": "Learn crypto trading responsibly with Mr. GSM.",
+  "description": "Master risk, build discipline, and learn markets with GSM Trading Lab.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#22c55e",
-  "icons": []
+  "icons": [
+    { "src": "/brand/gsm-logo-dark-compact.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/brand/gsm-logo-light-compact.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "maskable" }
+  ]
 }

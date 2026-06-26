@@ -131,51 +131,17 @@ body::before {
 @keyframes scan { from { transform: translateX(-20%); } to { transform: translateX(20%); } }
 @keyframes shine { 0%, 70% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
-/* Final crypto OS redesign patch */
-.crypto-orbit {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 12% 20%, rgba(16,185,129,.16), transparent 18rem),
-    radial-gradient(circle at 88% 18%, rgba(34,211,238,.12), transparent 22rem),
-    radial-gradient(circle at 50% 80%, rgba(59,130,246,.10), transparent 26rem);
-}
-.crypto-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1.5rem;
-  border: 1px solid rgba(255,255,255,.10);
-  background: linear-gradient(145deg, rgba(15,23,42,.82), rgba(2,6,23,.86));
-  padding: 1.5rem;
-  box-shadow: 0 30px 80px rgba(0,0,0,.22);
-  backdrop-filter: blur(24px);
-  transition: .28s ease;
-}
-.crypto-card::after {
-  content: "";
-  position: absolute;
-  inset: auto -20% -50% -20%;
-  height: 120px;
-  background: radial-gradient(circle, rgba(16,185,129,.18), transparent 70%);
-  opacity: 0;
-  transition: .28s ease;
-}
-.crypto-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(16,185,129,.38);
-  box-shadow: 0 30px 90px rgba(16,185,129,.10);
-}
-.crypto-card:hover::after { opacity: 1; }
-.admin-command-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-.admin-command-card {
-  border-radius: 1.5rem;
-  border: 1px solid rgba(255,255,255,.10);
-  background: linear-gradient(145deg, rgba(15,23,42,.88), rgba(2,6,23,.92));
-  padding: 1.25rem;
-  box-shadow: 0 25px 70px rgba(0,0,0,.22);
-}
+/* GSM brand identity integration */
+.brand-logo { display: flex; align-items: center; gap: .75rem; min-width: 0; }
+.brand-logo-img { object-fit: contain; border-radius: 9999px; filter: drop-shadow(0 0 22px rgba(34,197,94,.18)); }
+.brand-logo-nav .brand-logo-img { width: 48px; height: 48px; border: 1px solid rgba(34,197,94,.28); }
+.brand-logo-mark .brand-logo-img { width: 64px; height: 64px; }
+.brand-logo-hero { justify-content: center; }
+.brand-logo-hero .brand-logo-img { width: min(360px, 74vw); height: auto; border: 1px solid rgba(34,197,94,.24); box-shadow: 0 0 80px rgba(34,197,94,.14); }
+.brand-logo-full .brand-logo-img, .brand-logo-footer .brand-logo-img { width: 220px; height: auto; }
+.brand-logo-text { display: grid; line-height: 1.05; }
+.brand-logo-text strong { font-size: 1rem; font-weight: 950; color: #fff; letter-spacing: -.02em; }
+.brand-logo-text span { margin-top: .18rem; font-size: .62rem; text-transform: uppercase; letter-spacing: .16em; color: rgb(100 116 139); }
+.nav-menu-open { visibility: visible !important; opacity: 1 !important; transform: translateY(0) !important; }
+.crypto-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(34,197,94,.45), rgba(59,130,246,.35), transparent); }
+@media (max-width: 640px) { .brand-logo-text { display:none; } .brand-logo-nav .brand-logo-img { width: 42px; height: 42px; } }
